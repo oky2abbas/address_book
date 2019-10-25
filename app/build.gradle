@@ -1,0 +1,89 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion targetV
+    defaultConfig {
+        applicationId pkg
+        minSdkVersion minV
+        targetSdkVersion targetV
+        versionCode vCode
+        versionName vName
+        vectorDrawables.useSupportLibrary = true
+        resConfigs "en", "fa"
+        archivesBaseName = baseName
+        buildConfigField "String", "web", "\"https://quizpriz.com\""
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            crunchPngs true
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),
+                    'proguard-rules.pro'
+        }
+    }
+
+    kotlinOptions {
+        jvmTarget = 1.8
+    }
+
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+}
+
+dependencies {
+    //kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinV"
+
+    //android
+    implementation "androidx.appcompat:appcompat:$appcompatV"
+    implementation "androidx.core:core-ktx:$ktxV"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintV"
+
+    //lifecycle
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleV"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycleV"
+
+    //constraint
+    implementation "androidx.constraintlayout:constraintlayout:$constraintV"
+
+    //material
+    implementation "com.google.android.material:material:$materialV"
+
+    //dagger2
+    implementation "com.google.dagger:dagger:$dagger2V"
+    kapt "com.google.dagger:dagger-compiler:$dagger2V"
+    implementation "com.google.dagger:dagger-android-support:$dagger2V"
+    kapt "com.google.dagger:dagger-android-processor:$dagger2V"
+
+    //rx
+    implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidV"
+
+    //retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofitV"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitGsonV"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitRXV"
+
+    //gSon
+    implementation "com.google.code.gson:gson:$gsonV"
+
+    //reactor
+    implementation "com.github.oky2abbas:reactor:$reactorV"
+
+    //ktx
+    implementation "com.github.oky2abbas:ktx:v$okxV"
+
+    //test
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
+
+//apply plugin: 'com.google.gms.google-services'
