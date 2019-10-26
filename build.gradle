@@ -5,7 +5,7 @@ buildscript {
         vCode = 112
         vName = '1.2.10'
         baseName = "addressBook_${vName}"
-        pkg = 'com.oky2abbas.addressbook'
+        pkg = 'com.oky2abbas.person'
 
         gradleV = '3.5.1'
         kotlinV = '1.3.50'

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.oky2abbas.addressbook">
+    package="com.oky2abbas.person">
 
     <application
-        android:name=".core.App"
+        android:name="com.oky2abbas.person.core.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -13,7 +13,7 @@
         android:theme="@style/app.theme"
         tools:ignore="GoogleAppIndexingWarning">
 
-        <activity android:name=".view.ui.MainView">
+        <activity android:name="com.oky2abbas.person.view.ui.MainView">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

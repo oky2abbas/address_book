@@ -14,7 +14,7 @@ android {
         vectorDrawables.useSupportLibrary = true
         resConfigs "en", "fa"
         archivesBaseName = baseName
-        buildConfigField "String", "web", "\"https://quizpriz.com\""
+        buildConfigField "String", "web", "\"http://stage.achareh.ir\""
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
