@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Person(
     @SerializedName("id")
-    val id: Int,
+    val id: Int = 0,
     @SerializedName("region")
     val region: Region,
     @SerializedName("address")
@@ -17,9 +17,9 @@ data class Person(
     @SerializedName("gender")
     val gender: String,
     @SerializedName("lat")
-    val lat: Int,
+    val lat: Double,
     @SerializedName("lng")
-    val lng: Int,
+    val lng: Double,
     @SerializedName("coordinate_mobile")
     val coordinateMobile: String,
     @SerializedName("coordinate_phone_number")

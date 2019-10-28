@@ -4,10 +4,11 @@ import android.content.Context
 import android.content.res.Configuration
 import android.graphics.Typeface
 import androidx.core.content.res.ResourcesCompat
+import com.google.android.gms.maps.MapsInitializer
 import com.oky2abbas.person.R
-import com.oky2abbas.person.utils.LocaleUtils
 import com.oky2abbas.person.di.component.AppComponent
 import com.oky2abbas.person.di.component.DaggerAppComponent
+import com.oky2abbas.person.utils.LocaleUtils
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
 
@@ -32,6 +33,7 @@ class App : DaggerApplication() {
 
     override fun onCreate() {
         super.onCreate()
+        MapsInitializer.initialize(this)
         instance = this
         normalFont = ResourcesCompat.getFont(applicationContext, R.font.font_normal)!!
     }

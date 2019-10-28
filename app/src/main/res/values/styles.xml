@@ -1,14 +1,19 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <style name="app.theme" parent="@style/Theme.MaterialComponents.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorLight</item>
-        <item name="colorPrimaryDark">@color/colorLight</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/colorPrimaryDark
-        </item>
-        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
         <item name="fontFamily">@font/font_normal</item>
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Small</item>
+    </style>
+
+    <style name="edt.input.layout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:textColorHint">@color/colorPrimary</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Small</item>
+        <item name="boxStrokeColor">@color/colorDivider</item>
+        <item name="boxCollapsedPaddingTop">4dp</item>
     </style>
 
 </resources>

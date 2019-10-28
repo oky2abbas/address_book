@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        minV = 21
+        minV = 23
         targetV = 29
         vCode = 112
         vName = '1.2.10'
@@ -15,7 +15,7 @@ buildscript {
         navV = '2.1.0-alpha06'
         materialV = '1.0.0'
         constraintV = '1.1.3'
-        dagger2V = '2.24'
+        dagger2V = '2.25.2'
         rxAndroidV = '2.1.1'
         rxJavaV = '2.2.8'
         retrofitV = '2.6.2'
@@ -27,6 +27,8 @@ buildscript {
         indicatorV = '2.1.4'
         animationsV = '2.3@aar'
         gmsV = '4.3.1'
+        segmentedV = '1.0.1'
+        mapV = '17.0.0'
     }
     repositories {
         google()
@@ -36,7 +38,6 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:${gradleV}"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinV"
-//        classpath "com.google.gms:google-services:$gmsV"
     }
 }
 

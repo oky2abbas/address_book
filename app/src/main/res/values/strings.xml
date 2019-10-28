@@ -2,4 +2,18 @@
     <string name="app_name">AddressBook</string>
     <string name="str_etc">..!..</string>
     <string name="str_network_not_available">اتصال به اینترنت را برسی کنید</string>
+    <string name="str_first_name">نام</string>
+    <string name="str_last_name">نام خانوادگی</string>
+    <string name="str_mobile_number">شماره تماس</string>
+    <string name="str_address">آدرس</string>
+    <string name="str_register_info_title">لطفا اطلاعات خود را دقیق وارد کنید</string>
+    <string name="str_next_stage">مرحله بعدی</string>
+    <string name="str_select_location">لطفا موقعیت مکانی خود را بر روی نقشه مشخص کنید</string>
+    <string name="str_selected_location">تایید موقعیت مکانی</string>
+    <string name="str_gender">جنسیت</string>
+    <string name="str_phone_number">شماره تلفن ثابت</string>
+    <string name="str_man">آقا</string>
+    <string name="str_woman">خانم</string>
+    <string name="str_is_empty">این فیلد نمیتواند خالی باشد</string>
+    <string name="str_my_location">موقعیت مکانی من</string>
 </resources>

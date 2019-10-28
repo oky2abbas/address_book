@@ -4,6 +4,14 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('../assets/key/addressBook')
+            storePassword 'qwer1234'
+            keyAlias = 'addressBook'
+            keyPassword 'qwer1234'
+        }
+    }
     compileSdkVersion targetV
     defaultConfig {
         applicationId pkg
@@ -16,6 +24,7 @@ android {
         archivesBaseName = baseName
         buildConfigField "String", "web", "\"http://stage.achareh.ir\""
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.release
     }
 
     buildTypes {
@@ -23,8 +32,13 @@ android {
             crunchPngs true
             minifyEnabled true
             shrinkResources true
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),
                     'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.release
         }
     }
 
@@ -80,10 +94,14 @@ dependencies {
     //ktx
     implementation "com.github.oky2abbas:ktx:v$okxV"
 
+    //segmented
+    implementation "com.github.creageek:segmented:$segmentedV"
+
+    //google map
+    implementation "com.google.android.gms:play-services-maps:$mapV"
+
     //test
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
-
-//apply plugin: 'com.google.gms.google-services'

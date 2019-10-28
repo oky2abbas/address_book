@@ -8,6 +8,7 @@ import com.oky2abbas.person.BuildConfig
 import com.oky2abbas.person.utils.NetworkConnectionInterceptor
 import dagger.Module
 import dagger.Provides
+import okhttp3.Credentials
 import okhttp3.OkHttpClient
 import okhttp3.ResponseBody
 import retrofit2.Converter
@@ -59,16 +60,18 @@ class RestModule {
     fun provideOkHttp(context: Context): OkHttpClient {
         val httpClient = OkHttpClient.Builder()
             .addInterceptor(NetworkConnectionInterceptor(context))
-            .callTimeout(2, TimeUnit.MINUTES)
-            .connectTimeout(20, TimeUnit.SECONDS)
-            .readTimeout(30, TimeUnit.SECONDS)
-            .writeTimeout(30, TimeUnit.SECONDS)
+            .callTimeout(4, TimeUnit.MINUTES)
+            .connectTimeout(30, TimeUnit.SECONDS)
+            .readTimeout(40, TimeUnit.SECONDS)
+            .writeTimeout(40, TimeUnit.SECONDS)
             .addInterceptor { chain ->
                 val original = chain.request()
-                val request = original.newBuilder()
-                    .addHeader("Username", "09822222222")
-                    .addHeader("Password", "sana1234")
-                    .build()
+                val request = original.newBuilder().header(
+                    "Authorization", Credentials.basic(
+                        "09822222222",
+                        "sana1234"
+                    )
+                ).build()
                 chain.proceed(request)
             }
 

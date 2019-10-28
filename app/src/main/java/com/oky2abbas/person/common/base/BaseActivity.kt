@@ -9,14 +9,9 @@ import dagger.android.support.DaggerAppCompatActivity
 
 
 abstract class BaseActivity : DaggerAppCompatActivity() {
+
     @LayoutRes
     internal abstract fun layoutRes(): Int
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(layoutRes())
-        viewHandler(savedInstanceState)
-    }
 
     override fun attachBaseContext(newBase: Context) {
         super.attachBaseContext(LocaleUtils.setLocale(newBase))
@@ -27,5 +22,11 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
         LocaleUtils.setLocale(this)
     }
 
-    abstract fun viewHandler(savedInstanceState: Bundle?)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(layoutRes())
+        viewHandler(savedInstanceState)
+    }
+
+    internal abstract fun viewHandler(savedInstanceState: Bundle?)
 }
