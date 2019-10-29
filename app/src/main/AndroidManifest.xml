@@ -14,9 +14,9 @@
     <application
         android:name="com.oky2abbas.person.core.App"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ico_icon"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ico_icon_round"
         android:supportsRtl="true"
         android:theme="@style/app.theme"
         android:usesCleartextTraffic="true"

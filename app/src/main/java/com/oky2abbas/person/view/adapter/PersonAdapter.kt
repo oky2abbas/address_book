@@ -41,7 +41,7 @@ class PersonAdapter : RecyclerView.Adapter<VHolder>() {
         val item = holder.itemView
         val person = personList[position]
 
-        item.txtName.text = person.firstName
+        item.txtName.text = ("${person.firstName} ${person.lastName}")
         item.txtPhone.text = person.coordinateMobile
         item.txtAddress.text = person.address
     }

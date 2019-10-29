@@ -3,6 +3,7 @@
     <color name="colorPrimary">#03A9F4</color>
     <color name="colorPrimaryDark">#ffffff</color>
     <color name="colorPrimaryDarkest">#3F51B5</color>
+    <color name="colorPrimaryIcon">#909090</color>
     <color name="colorAccent">#03A9F4</color>
     <color name="colorLight">#ffffff</color>
     <color name="colorMilk">#f0f0f0</color>
@@ -10,5 +11,6 @@
     <color name="colorDark">#101010</color>
     <color name="colorHide">@android:color/transparent</color>
     <color name="colorDivider">#40000000</color>
-    <color name="colorHint">#7003A9F4</color>
+    <color name="colorHint">#70000000</color>
+
 </resources>

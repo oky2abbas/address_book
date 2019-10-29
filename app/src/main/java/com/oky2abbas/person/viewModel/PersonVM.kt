@@ -31,11 +31,10 @@ class PersonVM @Inject constructor(
     }, { liveError.value = it.message }).addToComposite()
 
     fun addPerson(person: LitePerson) = repo.addPerson(person).subscribe({
-        if (it.code() != 200) {
+        if (!it.isSuccessful) {
             liveError.value = it.errorMessage()
             return@subscribe
         }
-
         livePerson.value = it.toObject(Person::class.java)
     }, { liveError.value = it.message }).addToComposite()
 }

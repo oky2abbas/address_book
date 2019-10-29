@@ -1,9 +1,11 @@
 package com.oky2abbas.person.view.ui
 
+import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.location.Location
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.github.oky2abbas.ktx.widget.isPermission
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -44,7 +46,7 @@ class RegisterView : BaseActivity() {
         observerAddedPerson()
 
         configGender()
-        listenToNextStage()
+        goToNextStage()
         listenToSubmit()
     }
 
@@ -55,7 +57,7 @@ class RegisterView : BaseActivity() {
         }
     }
 
-    private fun listenToNextStage() = btnNextStage.setOnClickListener {
+    private fun goToNextStage() = btnNextStage.setOnClickListener {
         val emptyError = getString(R.string.str_is_empty)
         person.apply {
             edtFirstName.editText?.let {
@@ -93,6 +95,9 @@ class RegisterView : BaseActivity() {
                 } else address = it.text.toString()
             }
 
+            if (!isPermission(arrayOf(ACCESS_FINE_LOCATION)))
+                return@setOnClickListener
+
             flpRegister.go(ViewState.Two.index)
             listenToLoadMap()
         }
@@ -114,9 +119,10 @@ class RegisterView : BaseActivity() {
         fusedLocation.lastLocation.addOnSuccessListener { location: Location? ->
             location?.let {
                 val latLng = LatLng(it.latitude, it.longitude)
+                googleMap?.clear()
                 googleMap?.addMarker(myMarkerOption(latLng))
                 googleMap?.animateCamera(
-                    CameraUpdateFactory.newLatLngZoom(latLng, 12f)
+                    CameraUpdateFactory.newLatLngZoom(latLng, 16f)
                 )
             }
         }
@@ -132,12 +138,18 @@ class RegisterView : BaseActivity() {
     }
 
     private fun listenToSubmit() = btnSubmit.setOnClickListener {
+        flpRegister.go(ViewState.Three.index)
         personVM.addPerson(person)
     }
 
     private fun observerAddedPerson() = personVM.livePerson()
         .observe(this, Observer {
-            finish()
+            showMessage(
+                String.format(
+                    getString(R.string.str_save_message_format),
+                    "${it.firstName} ${it.lastName}"
+                )
+            ).also { finish() }
         })
 
     private fun observerError() = personVM.liveError()

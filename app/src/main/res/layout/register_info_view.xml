@@ -4,188 +4,201 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/colorMilk"
-        android:padding="20dp"
-        android:text="@string/str_register_info_title"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edtFirstName"
-        style="@style/edt.input.layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="24dp"
-        android:hint="@string/str_first_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:imeOptions="actionNext"
-            android:inputType="textPersonName"
-            android:maxLength="32"
-            android:maxLines="1"
-            android:padding="10dp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edtLastName"
-        style="@style/edt.input.layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/str_last_name"
-        app:layout_constraintEnd_toEndOf="@+id/edtFirstName"
-        app:layout_constraintStart_toStartOf="@+id/edtFirstName"
-        app:layout_constraintTop_toBottomOf="@+id/edtFirstName">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:imeOptions="actionNext"
-            android:inputType="textPersonName"
-            android:maxLength="32"
-            android:maxLines="1"
-            android:padding="10dp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edtMobileNumber"
-        style="@style/edt.input.layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/str_mobile_number"
-        app:layout_constraintEnd_toEndOf="@+id/edtLastName"
-        app:layout_constraintStart_toStartOf="@+id/edtLastName"
-        app:layout_constraintTop_toBottomOf="@+id/edtLastName">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:imeOptions="actionNext"
-            android:inputType="phone"
-            android:maxLength="11"
-            android:maxLines="1"
-            android:padding="10dp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edtPhoneNumber"
-        style="@style/edt.input.layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/str_phone_number"
-        app:layout_constraintEnd_toEndOf="@+id/edtMobileNumber"
-        app:layout_constraintStart_toStartOf="@+id/edtMobileNumber"
-        app:layout_constraintTop_toBottomOf="@+id/edtMobileNumber">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="phone"
-            android:maxLength="11"
-            android:maxLines="1"
-            android:padding="10dp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="0dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="24dp"
-        android:background="@color/colorMilk"
-        app:layout_constraintEnd_toEndOf="@+id/edtPhoneNumber"
-        app:layout_constraintStart_toStartOf="@+id/edtPhoneNumber"
-        app:layout_constraintTop_toBottomOf="@+id/edtPhoneNumber" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/edtAddress"
-        style="@style/edt.input.layout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:hint="@string/str_address"
-        app:layout_constraintEnd_toEndOf="@+id/edtPhoneNumber"
-        app:layout_constraintStart_toStartOf="@+id/edtPhoneNumber"
-        app:layout_constraintTop_toBottomOf="@+id/view">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:imeOptions="actionDone"
-            android:inputType="textMultiLine"
-            android:maxLength="128"
-            android:maxLines="2"
-            android:padding="10dp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <FrameLayout
-        android:id="@+id/frameLayout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/frameLayout"
-        app:layout_constraintEnd_toEndOf="@+id/edtAddress"
-        app:layout_constraintTop_toBottomOf="@+id/edtAddress">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <com.creageek.segmentedbutton.SegmentedButton
-            android:id="@+id/segGender"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layoutDirection="ltr"
-            android:orientation="horizontal"
-            app:borderColor="@color/colorPrimary"
-            app:cornerRadius="6dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:rippleColor="@color/colorPrimaryDarkest"
-            app:rippleColorChecked="@color/colorPrimaryDarkest"
-            app:segmentColorChecked="@color/colorPrimaryDarkest"
-            app:segmentFont="@font/font_normal"
-            app:segmentFontChecked="@font/font_medium"
-            app:segmentHeight="35dp"
-            app:spreadType="evenly"
-            app:textColor="@color/colorDark"
-            app:textColorChecked="@color/colorLight">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-            <RadioButton
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView"
+                style="@style/txt.bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/colorMilk"
+                android:gravity="center"
+                android:padding="20dp"
+                android:text="@string/str_register_info_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtFirstName"
+                style="@style/edt.input.layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="24dp"
+                android:hint="@string/str_first_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appCompatTextView">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/edt.input.edit"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPersonName"
+                    android:maxLength="32"
+                    android:maxLines="1"
+                    app:drawableStartCompat="@drawable/ico_short_text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtLastName"
+                style="@style/edt.input.layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/str_last_name"
+                app:layout_constraintEnd_toEndOf="@+id/edtFirstName"
+                app:layout_constraintStart_toStartOf="@+id/edtFirstName"
+                app:layout_constraintTop_toBottomOf="@+id/edtFirstName">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/edt.input.edit"
+                    android:imeOptions="actionNext"
+                    android:inputType="textPersonName"
+                    android:maxLength="32"
+                    android:maxLines="1"
+                    app:drawableStartCompat="@drawable/ico_short_text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtMobileNumber"
+                style="@style/edt.input.layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/str_mobile_number"
+                app:layout_constraintEnd_toEndOf="@+id/edtLastName"
+                app:layout_constraintStart_toStartOf="@+id/edtLastName"
+                app:layout_constraintTop_toBottomOf="@+id/edtLastName">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/edt.input.edit"
+                    android:imeOptions="actionNext"
+                    android:inputType="phone"
+                    android:maxLength="11"
+                    android:maxLines="1"
+                    app:drawableStartCompat="@drawable/ico_phone" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtPhoneNumber"
+                style="@style/edt.input.layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/str_phone_number"
+                app:layout_constraintEnd_toEndOf="@+id/edtMobileNumber"
+                app:layout_constraintStart_toStartOf="@+id/edtMobileNumber"
+                app:layout_constraintTop_toBottomOf="@+id/edtMobileNumber">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/edt.input.edit"
+                    android:inputType="phone"
+                    android:maxLength="11"
+                    android:maxLines="1"
+                    app:drawableStartCompat="@drawable/ico_phone" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_marginTop="24dp"
+                android:background="@color/colorMilk"
+                app:layout_constraintEnd_toEndOf="@+id/edtPhoneNumber"
+                app:layout_constraintStart_toStartOf="@+id/edtPhoneNumber"
+                app:layout_constraintTop_toBottomOf="@+id/edtPhoneNumber" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/edtAddress"
+                style="@style/edt.input.layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:hint="@string/str_address"
+                app:layout_constraintEnd_toEndOf="@+id/edtPhoneNumber"
+                app:layout_constraintStart_toStartOf="@+id/edtPhoneNumber"
+                app:layout_constraintTop_toBottomOf="@+id/view">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/edt.input.edit"
+                    android:imeOptions="actionDone"
+                    android:inputType="textMultiLine"
+                    android:maxLength="128"
+                    android:maxLines="2"
+                    app:drawableStartCompat="@drawable/ico_home" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <FrameLayout
+                android:id="@+id/frameLayout2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/str_man" />
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="@+id/edtAddress"
+                app:layout_constraintTop_toBottomOf="@+id/edtAddress">
 
-            <RadioButton
+                <com.creageek.segmentedbutton.SegmentedButton
+                    android:id="@+id/segGender"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layoutDirection="ltr"
+                    android:orientation="horizontal"
+                    app:borderColor="@color/colorPrimary"
+                    app:cornerRadius="6dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:rippleColor="@color/colorPrimaryDarkest"
+                    app:rippleColorChecked="@color/colorPrimaryDarkest"
+                    app:segmentColorChecked="@color/colorPrimaryDarkest"
+                    app:segmentFont="@font/font_normal"
+                    app:segmentFontChecked="@font/font_bold"
+                    app:segmentHeight="35dp"
+                    app:spreadType="evenly"
+                    app:textColor="@color/colorDark"
+                    app:textColorChecked="@color/colorLight">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/str_man" />
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/str_woman" />
+                </com.creageek.segmentedbutton.SegmentedButton>
+            </FrameLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView2"
+                style="@style/txt.bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/str_woman" />
-        </com.creageek.segmentedbutton.SegmentedButton>
-    </FrameLayout>
+                android:layout_marginStart="8dp"
+                android:text="@string/str_gender"
+                app:layout_constraintBottom_toBottomOf="@+id/frameLayout2"
+                app:layout_constraintStart_toStartOf="@+id/edtAddress"
+                app:layout_constraintTop_toTopOf="@+id/frameLayout2" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/appCompatTextView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/str_gender"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/frameLayout2"
-        app:layout_constraintStart_toStartOf="@+id/edtAddress"
-        app:layout_constraintTop_toTopOf="@+id/frameLayout2" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
     <FrameLayout
         android:id="@+id/frameLayout"
@@ -199,14 +212,11 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnNextStage"
+            style="@style/btn.colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="32dp"
-            android:layout_marginEnd="32dp"
-            android:padding="8dp"
-            android:text="@string/str_next_stage"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+            android:text="@string/str_next_stage" />
 
     </FrameLayout>
 

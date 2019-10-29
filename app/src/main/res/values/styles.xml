@@ -9,10 +9,46 @@
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Small</item>
     </style>
 
+    <style name="txt" parent="Widget.AppCompat.TextView">
+        <item name="android:gravity">right|center</item>
+        <item name="android:drawablePadding">12dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Small</item>w
+    </style>
+
+    <style name="txt.small" parent="txt">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="txt.bold" parent="txt">
+        <item name="fontFamily">@font/font_bold</item>
+    </style>
+
+    <style name="txt.small.bold" parent="txt.small">
+        <item name="fontFamily">@font/font_bold</item>
+    </style>
+
     <style name="edt.input.layout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="hintTextAppearance">@style/TextAppearance.AppCompat.Small</item>
         <item name="errorTextAppearance">@style/TextAppearance.AppCompat.Small</item>
-        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Small</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Small</item>w
+    </style>
+
+    <style name="edt.input.edit" parent="Widget.AppCompat.EditText">
+        <item name="android:gravity">right|center</item>
+        <item name="android:drawablePadding">12dp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="hintTextAppearance">@style/TextAppearance.AppCompat.Small</item>
+        <item name="errorTextAppearance">@style/TextAppearance.AppCompat.Small</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Small</item>w
+    </style>
+
+    <style name="btn.colored" parent="Widget.MaterialComponents.Button">
+        <item name="fontFamily">@font/font_bold</item>
+       <item name="android:paddingTop">10dp</item>
+       <item name="android:paddingBottom">10dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Medium</item>w
     </style>
 
 </resources>

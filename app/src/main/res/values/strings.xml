@@ -16,4 +16,6 @@
     <string name="str_woman">خانم</string>
     <string name="str_is_empty">این فیلد نمیتواند خالی باشد</string>
     <string name="str_my_location">موقعیت مکانی من</string>
+    <string name="str_save_message_format">اطلاعات %s با موفیت ذخیره شد</string>
+    <string name="str_fullName">نام/نام خانوادگی</string>
 </resources>

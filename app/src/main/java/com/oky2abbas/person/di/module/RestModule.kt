@@ -61,9 +61,9 @@ class RestModule {
         val httpClient = OkHttpClient.Builder()
             .addInterceptor(NetworkConnectionInterceptor(context))
             .callTimeout(4, TimeUnit.MINUTES)
-            .connectTimeout(30, TimeUnit.SECONDS)
-            .readTimeout(40, TimeUnit.SECONDS)
-            .writeTimeout(40, TimeUnit.SECONDS)
+            .connectTimeout(120, TimeUnit.SECONDS)
+            .readTimeout(120, TimeUnit.SECONDS)
+            .writeTimeout(120, TimeUnit.SECONDS)
             .addInterceptor { chain ->
                 val original = chain.request()
                 val request = original.newBuilder().header(
