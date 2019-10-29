@@ -1,5 +1,6 @@
 package com.oky2abbas.person.view.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -22,7 +23,9 @@ class PersonAdapter : RecyclerView.Adapter<VHolder>() {
     }
 
     fun add(person: Person): Int {
+        person.isNew = true
         personList.add(person)
+        notifyDataSetChanged()
         return personList.indexOf(person)
     }
 
@@ -44,6 +47,10 @@ class PersonAdapter : RecyclerView.Adapter<VHolder>() {
     override fun onBindViewHolder(holder: VHolder, position: Int) {
         val item = holder.itemView
         val person = personList[position]
+
+        if(person.isNew)
+            item.crdPerson.setCardBackgroundColor(Color.YELLOW)
+        else item.crdPerson.setCardBackgroundColor(Color.WHITE)
 
         item.txtName.text = ("${person.firstName} ${person.lastName}")
         item.txtPhone.text = person.coordinateMobile

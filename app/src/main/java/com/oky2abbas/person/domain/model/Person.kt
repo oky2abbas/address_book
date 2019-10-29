@@ -23,7 +23,8 @@ data class Person(
     @SerializedName("coordinate_mobile")
     val coordinateMobile: String,
     @SerializedName("coordinate_phone_number")
-    val coordinatePhoneNumber: String
+    val coordinatePhoneNumber: String,
+    var isNew : Boolean = false
 )
 
 data class CityObject(

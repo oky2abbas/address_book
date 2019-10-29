@@ -5,6 +5,7 @@
     style="@style/Widget.MaterialComponents.CardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/crdPerson"
     android:layout_marginStart="16dp"
     android:layout_marginTop="4dp"
     android:layout_marginEnd="16dp"
