@@ -58,13 +58,14 @@ class MainView : BaseActivity() {
 
     private fun subscribeToError() = personVM.liveError()
         .observe(this, Observer {
+            personVM.getPersonList()
             showMessage(it)
         })
 
-    @Subscribe(threadMode = ThreadMode.MAIN_ORDERED)
+    @Subscribe(threadMode = ThreadMode.MAIN)
     fun subscribeToPersonBus(event: PersonBus) {
         if (rcyPerson.adapter != null) {
-            rcyPerson.smoothScrollToPosition(
+            rcyPerson.scrollToPosition(
                 adapter.add(event.person)
             )
         }

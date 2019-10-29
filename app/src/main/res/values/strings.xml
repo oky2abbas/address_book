@@ -14,8 +14,9 @@
     <string name="str_phone_number">شماره تلفن ثابت</string>
     <string name="str_man">آقا</string>
     <string name="str_woman">خانم</string>
-    <string name="str_is_empty">این فیلد نمیتواند خالی باشد</string>
+    <string name="str_is_not_valid_len">طول کاراکتر های وارد شده کمتر از حد مجاز است</string>
     <string name="str_my_location">موقعیت مکانی من</string>
     <string name="str_save_message_format">اطلاعات %s با موفیت ذخیره شد</string>
     <string name="str_fullName">نام/نام خانوادگی</string>
+    <string name="str_please_select_gender">لطفا جنسیت را مشخص کنید</string>
 </resources>

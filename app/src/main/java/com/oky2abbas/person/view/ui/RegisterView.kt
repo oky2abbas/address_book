@@ -50,15 +50,12 @@ class RegisterView : BaseActivity() {
         listenerToSubmit()
     }
 
-    private fun initGender() = segGender {
-        initialCheckedIndex = 0
-        onSegmentChecked { segment ->
-            person.gender = segment.text.toString()
-        }
+    private fun initGender() = segGender.onSegmentChecked {
+        person.gender = it.text.toString()
     }
 
     private fun listenerToNextStage() = btnNextStage.setOnClickListener {
-        val emptyError = getString(R.string.str_is_empty)
+        val emptyError = getString(R.string.str_is_not_valid_len)
 
         person.apply {
             edtFirstName.editText?.let {
@@ -76,14 +73,14 @@ class RegisterView : BaseActivity() {
             }
 
             edtMobileNumber.editText?.let {
-                if (it.text.isEmpty()) {
+                if (it.text.length < 11) {
                     it.error = emptyError
                     return@setOnClickListener
                 } else coordinateMobile = it.text.toString()
             }
 
             edtPhoneNumber.editText?.let {
-                if (it.text.isEmpty()) {
+                if (it.text.length < 11) {
                     it.error = emptyError
                     return@setOnClickListener
                 } else coordinatePhoneNumber = it.text.toString()
@@ -94,6 +91,11 @@ class RegisterView : BaseActivity() {
                     it.error = emptyError
                     return@setOnClickListener
                 } else address = it.text.toString()
+            }
+
+            if (person.gender.isEmpty()) {
+                showMessage(getString(R.string.str_please_select_gender))
+                return@setOnClickListener
             }
 
             if (!isPermission(arrayOf(ACCESS_FINE_LOCATION)))
@@ -158,6 +160,7 @@ class RegisterView : BaseActivity() {
 
     private fun subscribeError() = personVM.liveError()
         .observe(this, Observer {
+            flpRegister.go(ViewState.One.index)
             showMessage(it)
         })
 }

@@ -3,6 +3,7 @@ package com.oky2abbas.person.common.ext
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.core.content.ContextCompat
@@ -20,6 +21,7 @@ fun Context.showMessage(message: String) {
 
     val toast = Toast.makeText(this.applicationContext, message, Toast.LENGTH_SHORT)
     toast.view = layView
+    toast.setGravity(Gravity.TOP, 0, 0)
 
     toast.show()
 }

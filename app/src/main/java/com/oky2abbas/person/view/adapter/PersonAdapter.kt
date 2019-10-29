@@ -48,9 +48,9 @@ class PersonAdapter : RecyclerView.Adapter<VHolder>() {
         val item = holder.itemView
         val person = personList[position]
 
-        if(person.isNew)
+        if (person.isNew)
             item.crdPerson.setCardBackgroundColor(Color.YELLOW)
-        else item.crdPerson.setCardBackgroundColor(Color.WHITE)
+        else item.crdPerson.setCardBackgroundColor(Color.parseColor("#f0f0f0"))
 
         item.txtName.text = ("${person.firstName} ${person.lastName}")
         item.txtPhone.text = person.coordinateMobile
