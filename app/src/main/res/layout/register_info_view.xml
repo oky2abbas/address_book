@@ -22,7 +22,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="24dp"
         android:hint="@string/str_first_name"
         app:layout_constraintEnd_toEndOf="parent"
@@ -146,7 +146,7 @@
 
         <com.creageek.segmentedbutton.SegmentedButton
             android:id="@+id/segGender"
-            android:layout_width="170dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layoutDirection="ltr"
             android:orientation="horizontal"
@@ -160,7 +160,7 @@
             app:segmentColorChecked="@color/colorPrimaryDarkest"
             app:segmentFont="@font/font_normal"
             app:segmentFontChecked="@font/font_medium"
-            app:segmentHeight="45dp"
+            app:segmentHeight="35dp"
             app:spreadType="evenly"
             app:textColor="@color/colorDark"
             app:textColorChecked="@color/colorLight">

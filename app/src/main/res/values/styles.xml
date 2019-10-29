@@ -10,10 +10,9 @@
     </style>
 
     <style name="edt.input.layout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="android:textColorHint">@color/colorPrimary</item>
+        <item name="hintTextAppearance">@style/TextAppearance.AppCompat.Small</item>
+        <item name="errorTextAppearance">@style/TextAppearance.AppCompat.Small</item>
         <item name="android:textAppearance">@style/TextAppearance.AppCompat.Small</item>
-        <item name="boxStrokeColor">@color/colorDivider</item>
-        <item name="boxCollapsedPaddingTop">4dp</item>
     </style>
 
 </resources>

@@ -1,10 +1,14 @@
 package com.oky2abbas.person.view.ui
 
+import android.location.Location
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.oky2abbas.person.R
 import com.oky2abbas.person.common.base.BaseActivity
@@ -29,6 +33,7 @@ class RegisterView : BaseActivity() {
 
     private val personVM by lazy { vmFactory.get(this, PersonVM::class.java) }
     private val person by lazy { LitePerson() }
+    private val fusedLocation by lazy { LocationServices.getFusedLocationProviderClient(this) }
 
     override fun layoutRes(): Int {
         return R.layout.register_view
@@ -96,15 +101,34 @@ class RegisterView : BaseActivity() {
     private fun listenToLoadMap() = (frgMap as SupportMapFragment).getMapAsync {
         googleMap = it
         listenToSelectLocation()
+        listenToGetLastLocation()
+        listenToRequestLocation()
     }
 
     private fun listenToSelectLocation() = googleMap?.setOnMapClickListener {
         googleMap?.clear()
-        googleMap?.addMarker(MarkerOptions().apply {
-            position(it)
-            icon(getVectorBitmapDescriptor(R.drawable.ico_location))
-            title(getString(R.string.str_my_location))
-        })
+        googleMap?.addMarker(myMarkerOption(it))
+    }
+
+    private fun listenToGetLastLocation() =
+        fusedLocation.lastLocation.addOnSuccessListener { location: Location? ->
+            location?.let {
+                val latLng = LatLng(it.latitude, it.longitude)
+                googleMap?.addMarker(myMarkerOption(latLng))
+                googleMap?.animateCamera(
+                    CameraUpdateFactory.newLatLngZoom(latLng, 12f)
+                )
+            }
+        }
+
+    private fun listenToRequestLocation() = fabGetMyLocation.setOnClickListener {
+        listenToGetLastLocation()
+    }
+
+    private fun myMarkerOption(location: LatLng) = MarkerOptions().apply {
+        position(location)
+        icon(getVectorBitmapDescriptor(R.drawable.ico_location_marker))
+        title(getString(R.string.str_my_location))
     }
 
     private fun listenToSubmit() = btnSubmit.setOnClickListener {

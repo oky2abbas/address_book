@@ -26,9 +26,9 @@ buildscript {
         okxV = '0.0.8'
         indicatorV = '2.1.4'
         animationsV = '2.3@aar'
-        gmsV = '4.3.1'
         segmentedV = '1.0.1'
         mapV = '17.0.0'
+        locationV = '17.0.0'
     }
     repositories {
         google()
