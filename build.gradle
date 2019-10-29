@@ -2,8 +2,8 @@ buildscript {
     ext {
         minV = 23
         targetV = 29
-        vCode = 112
-        vName = '1.2.10'
+        vCode = 1
+        vName = '0.0.1'
         baseName = "addressBook_${vName}"
         pkg = 'com.oky2abbas.person'
 
@@ -12,28 +12,24 @@ buildscript {
         lifecycleV = '2.1.0'
         appcompatV = '1.1.0-rc01'
         ktxV = '1.1.0'
-        navV = '2.1.0-alpha06'
         materialV = '1.0.0'
         constraintV = '1.1.3'
         dagger2V = '2.25.2'
         rxAndroidV = '2.1.1'
-        rxJavaV = '2.2.8'
         retrofitV = '2.6.2'
         retrofitGsonV = '2.6.2'
         retrofitRXV = '2.6.2'
-        reactorV = 'v1.2.5'
         gsonV = '2.8.6'
         okxV = '0.0.8'
-        indicatorV = '2.1.4'
-        animationsV = '2.3@aar'
         segmentedV = '1.0.1'
         mapV = '17.0.0'
         locationV = '17.0.0'
+        busV = '3.1.1'
     }
     repositories {
         google()
         jcenter()
-        
+
     }
     dependencies {
         classpath "com.android.tools.build:gradle:${gradleV}"

@@ -14,11 +14,9 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.oky2abbas.person.R
 import com.oky2abbas.person.common.base.BaseActivity
-import com.oky2abbas.person.common.ext.get
-import com.oky2abbas.person.common.ext.getVectorBitmapDescriptor
-import com.oky2abbas.person.common.ext.go
-import com.oky2abbas.person.common.ext.showMessage
+import com.oky2abbas.person.common.ext.*
 import com.oky2abbas.person.domain.model.LitePerson
+import com.oky2abbas.person.view.bus.PersonBus
 import com.oky2abbas.person.view.state.ViewState
 import com.oky2abbas.person.viewModel.PersonVM
 import kotlinx.android.synthetic.main.register_info_view.*
@@ -28,6 +26,7 @@ import javax.inject.Inject
 
 
 class RegisterView : BaseActivity() {
+
     @Inject
     lateinit var vmFactory: ViewModelProvider.Factory
 
@@ -42,23 +41,25 @@ class RegisterView : BaseActivity() {
     }
 
     override fun viewHandler(savedInstanceState: Bundle?) {
-        observerError()
-        observerAddedPerson()
+        initGender()
 
-        configGender()
-        goToNextStage()
-        listenToSubmit()
+        subscribeError()
+        subscribeAddedPerson()
+
+        listenerToNextStage()
+        listenerToSubmit()
     }
 
-    private fun configGender() = segGender {
+    private fun initGender() = segGender {
         initialCheckedIndex = 0
         onSegmentChecked { segment ->
             person.gender = segment.text.toString()
         }
     }
 
-    private fun goToNextStage() = btnNextStage.setOnClickListener {
+    private fun listenerToNextStage() = btnNextStage.setOnClickListener {
         val emptyError = getString(R.string.str_is_empty)
+
         person.apply {
             edtFirstName.editText?.let {
                 if (it.text.isEmpty()) {
@@ -105,17 +106,22 @@ class RegisterView : BaseActivity() {
 
     private fun listenToLoadMap() = (frgMap as SupportMapFragment).getMapAsync {
         googleMap = it
-        listenToSelectLocation()
-        listenToGetLastLocation()
-        listenToRequestLocation()
+
+        listenerToSelectLocation()
+        listenerToRequestLocation()
+        subscribeToGetLastLocation()
     }
 
-    private fun listenToSelectLocation() = googleMap?.setOnMapClickListener {
+    private fun listenerToSelectLocation() = googleMap?.setOnMapClickListener {
         googleMap?.clear()
         googleMap?.addMarker(myMarkerOption(it))
     }
 
-    private fun listenToGetLastLocation() =
+    private fun listenerToRequestLocation() = fabGetMyLocation.setOnClickListener {
+        subscribeToGetLastLocation()
+    }
+
+    private fun subscribeToGetLastLocation() =
         fusedLocation.lastLocation.addOnSuccessListener { location: Location? ->
             location?.let {
                 val latLng = LatLng(it.latitude, it.longitude)
@@ -127,32 +133,30 @@ class RegisterView : BaseActivity() {
             }
         }
 
-    private fun listenToRequestLocation() = fabGetMyLocation.setOnClickListener {
-        listenToGetLastLocation()
-    }
-
     private fun myMarkerOption(location: LatLng) = MarkerOptions().apply {
         position(location)
         icon(getVectorBitmapDescriptor(R.drawable.ico_location_marker))
         title(getString(R.string.str_my_location))
     }
 
-    private fun listenToSubmit() = btnSubmit.setOnClickListener {
+    private fun listenerToSubmit() = btnSubmit.setOnClickListener {
         flpRegister.go(ViewState.Three.index)
         personVM.addPerson(person)
     }
 
-    private fun observerAddedPerson() = personVM.livePerson()
+    private fun subscribeAddedPerson() = personVM.livePerson()
         .observe(this, Observer {
             showMessage(
                 String.format(
                     getString(R.string.str_save_message_format),
                     "${it.firstName} ${it.lastName}"
                 )
-            ).also { finish() }
+            )
+            PersonBus(it).pushToBus()
+            finish()
         })
 
-    private fun observerError() = personVM.liveError()
+    private fun subscribeError() = personVM.liveError()
         .observe(this, Observer {
             showMessage(it)
         })

@@ -2,8 +2,6 @@ package com.oky2abbas.person.utils
 
 import android.content.Context
 import android.content.res.Configuration
-import android.content.res.Resources
-import android.os.Build
 import java.util.*
 
 class LocaleUtils {
@@ -30,11 +28,11 @@ class LocaleUtils {
             return newContext
         }
 
-        fun getLocale(res: Resources): Locale {
-            val config = res.configuration
-            return if (Build.VERSION.SDK_INT >= 24)
-                config.locales.get(0)
-            else config.locale
-        }
+//        fun getLocale(res: Resources): Locale {
+//            val config = res.configuration
+//            return if (Build.VERSION.SDK_INT >= 24)
+//                config.locales.get(0)
+//            else config.locale
+//        }
     }
 }

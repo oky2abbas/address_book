@@ -1,4 +1,4 @@
-package com.quiz.prize.app.domain.repo
+package com.oky2abbas.person.domain.repo
 
 import com.github.oky2abbas.ktx.rx.newThread
 import com.oky2abbas.person.domain.api.PersonAPI

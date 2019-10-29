@@ -1,4 +1,4 @@
-package com.quiz.prize.app.view.adapter
+package com.oky2abbas.person.view.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

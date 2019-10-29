@@ -12,6 +12,7 @@ android {
             keyPassword 'qwer1234'
         }
     }
+
     compileSdkVersion targetV
     defaultConfig {
         applicationId pkg
@@ -23,7 +24,6 @@ android {
         resConfigs "en", "fa"
         archivesBaseName = baseName
         buildConfigField "String", "web", "\"http://stage.achareh.ir\""
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         signingConfig signingConfigs.release
     }
 
@@ -53,23 +53,20 @@ android {
 }
 
 dependencies {
-    //kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinV"
-
     //android
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinV"
     implementation "androidx.appcompat:appcompat:$appcompatV"
-    implementation "androidx.core:core-ktx:$ktxV"
     implementation "androidx.constraintlayout:constraintlayout:$constraintV"
-
-    //lifecycle
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleV"
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycleV"
 
-    //constraint
-    implementation "androidx.constraintlayout:constraintlayout:$constraintV"
-
     //material
     implementation "com.google.android.material:material:$materialV"
+
+    //google
+    implementation "com.google.code.gson:gson:$gsonV"
+    implementation "com.google.android.gms:play-services-maps:$mapV"
+    implementation "com.google.android.gms:play-services-location:$locationV"
 
     //dagger2
     implementation "com.google.dagger:dagger:$dagger2V"
@@ -85,26 +82,12 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$retrofitGsonV"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitRXV"
 
-    //gSon
-    implementation "com.google.code.gson:gson:$gsonV"
-
-    //reactor
-    implementation "com.github.oky2abbas:reactor:$reactorV"
-
     //ktx
     implementation "com.github.oky2abbas:ktx:v$okxV"
 
     //segmented
     implementation "com.github.creageek:segmented:$segmentedV"
 
-    //google map
-    implementation "com.google.android.gms:play-services-maps:$mapV"
-
-    //location
-    implementation "com.google.android.gms:play-services-location:$locationV"
-
-    //test
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    //event bus
+    implementation "org.greenrobot:eventbus:$busV"
 }

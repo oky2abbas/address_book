@@ -8,7 +8,7 @@ import com.oky2abbas.person.common.ext.toArrayObject
 import com.oky2abbas.person.common.ext.toObject
 import com.oky2abbas.person.domain.model.LitePerson
 import com.oky2abbas.person.domain.model.Person
-import com.quiz.prize.app.domain.repo.PersonRepo
+import com.oky2abbas.person.domain.repo.PersonRepo
 import javax.inject.Inject
 
 class PersonVM @Inject constructor(

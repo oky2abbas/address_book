@@ -6,13 +6,14 @@ import androidx.lifecycle.ViewModelProvider
 import com.github.oky2abbas.ktx.widget.callActivity
 import com.oky2abbas.person.R
 import com.oky2abbas.person.common.base.BaseActivity
-import com.oky2abbas.person.common.ext.get
-import com.oky2abbas.person.common.ext.go
-import com.oky2abbas.person.common.ext.showMessage
+import com.oky2abbas.person.common.ext.*
 import com.oky2abbas.person.view.adapter.PersonAdapter
+import com.oky2abbas.person.view.bus.PersonBus
 import com.oky2abbas.person.view.state.ViewState
 import com.oky2abbas.person.viewModel.PersonVM
 import kotlinx.android.synthetic.main.main_view.*
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 import javax.inject.Inject
 
 class MainView : BaseActivity() {
@@ -29,27 +30,43 @@ class MainView : BaseActivity() {
         return R.layout.main_view
     }
 
+    override fun onDestroy() {
+        unRegisterBus()
+        super.onDestroy()
+    }
+
     override fun viewHandler(savedInstanceState: Bundle?) {
-        listenToAddPerson()
-        observerPersonList()
-        observerError()
+        registerBus()
+
+        listenerToShowAddView()
+        subscribeToGetPersonList()
+        subscribeToError()
 
         personVM.getPersonList()
     }
 
-    private fun listenToAddPerson() = fabAdd.setOnClickListener {
+    private fun listenerToShowAddView() = fabAdd.setOnClickListener {
         callActivity(RegisterView())
     }
 
-    private fun observerPersonList() = personVM.livePersonList()
+    private fun subscribeToGetPersonList() = personVM.livePersonList()
         .observe(this, Observer {
             flpMain.go(ViewState.Two.index)
             adapter.injectList(it)
             rcyPerson.adapter = adapter
         })
 
-    private fun observerError() = personVM.liveError()
+    private fun subscribeToError() = personVM.liveError()
         .observe(this, Observer {
             showMessage(it)
         })
+
+    @Subscribe(threadMode = ThreadMode.MAIN_ORDERED)
+    fun subscribeToPersonBus(event: PersonBus) {
+        if (rcyPerson.adapter != null) {
+            rcyPerson.smoothScrollToPosition(
+                adapter.add(event.person)
+            )
+        }
+    }
 }

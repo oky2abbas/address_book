@@ -17,8 +17,8 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/appCompatTextView4"
-            android:layout_width="wrap_content"
             style="@style/txt.small"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
@@ -29,8 +29,8 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/appCompatTextView5"
-            android:layout_width="wrap_content"
             style="@style/txt.small"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:text="@string/str_mobile_number"
@@ -40,9 +40,9 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/appCompatTextView6"
+            style="@style/txt.small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/txt.small"
             android:layout_marginTop="8dp"
             android:text="@string/str_address"
             android:textColor="@color/colorHint"

@@ -7,19 +7,23 @@ import androidx.recyclerview.widget.RecyclerView
 import com.oky2abbas.person.R
 import com.oky2abbas.person.domain.model.Person
 import com.oky2abbas.person.view.callback.PersonCallback
-import com.quiz.prize.app.view.adapter.VHolder
 import kotlinx.android.synthetic.main.main_item.view.*
 
 class PersonAdapter : RecyclerView.Adapter<VHolder>() {
-    private var personList = listOf<Person>()
+    private var personList = mutableListOf<Person>()
 
     fun injectList(newList: List<Person>) {
         val diffCallback = PersonCallback(personList, newList)
         val diffResult = DiffUtil.calculateDiff(diffCallback)
 
-        this.personList = newList
+        this.personList = newList.toMutableList()
 
         diffResult.dispatchUpdatesTo(this)
+    }
+
+    fun add(person: Person): Int {
+        personList.add(person)
+        return personList.indexOf(person)
     }
 
     override fun getItemCount(): Int {
